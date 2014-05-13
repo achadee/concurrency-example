@@ -5,7 +5,8 @@ import main.Param;
 /**
  * 
  * @author avinchadee
- * extended class for sections and locks (because they contain alot of similar methods	
+ * extended class for sections and locks (because they 
+ * contain a lot of similar methods	
  *
  */
 

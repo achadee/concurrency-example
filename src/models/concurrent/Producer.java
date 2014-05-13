@@ -41,7 +41,6 @@ public class Producer extends Thread{
 		try {
 			int a = Param.arrivalLapse();
 			Thread.sleep(a);
-			//System.out.println("Another ship has arrived! creating ship! took: " + a);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			Thread.currentThread().interrupt();

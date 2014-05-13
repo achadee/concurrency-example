@@ -29,7 +29,8 @@ public class Normal_tug extends Thread {
 	public void run() {
 		while(true){
 			synchronized (s){
-				if(s.getCurrent_vessel() != null && s2.getCurrent_vessel() == null){
+				if(s.getCurrent_vessel() != null 
+						&& s2.getCurrent_vessel() == null){
 					this.s.moveTo(this.s2);
 					s.notifyAll();
 				}
@@ -39,6 +40,7 @@ public class Normal_tug extends Thread {
 	}
 
 	private boolean vessel_appears_ready_to_move_to_next_section() {
-		return s.getCurrent_vessel() != null && s2.getCurrent_vessel() == null;
+		return s.getCurrent_vessel() != null 
+				&& s2.getCurrent_vessel() == null;
 	}
 }

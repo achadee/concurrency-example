@@ -27,7 +27,8 @@ public class Launch_tug extends Thread {
 		while(true){
 			synchronized (l){
 				synchronized (section){
-					if(l.getState() == 1 && l.getCurrent_vessel() != null && section.getCurrent_vessel() == null){
+					if(l.getState() == 1 && l.getCurrent_vessel() != null && 
+							section.getCurrent_vessel() == null){
 						this.l.moveTo(this.section);
 						this.section.notifyAll();
 					}

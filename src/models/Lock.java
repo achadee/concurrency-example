@@ -47,7 +47,8 @@ public class Lock extends Component {
 	 */
 	
 	public synchronized void take_in_vessel(Vessel v) {
-		// while the lock is full with water or there is a current vessel in the lock - wait
+		// while the lock is full with water or there is a current vessel in 
+		// the lock - wait
 		// OR 
 		// while the lock is empty and there is no vessel in the lock
 		while(this.getState() == 1 || this.getCurrent_vessel() != null) {
@@ -68,7 +69,8 @@ public class Lock extends Component {
 	 */
 	
 	public synchronized void return_vessel(Vessel v) {
-		// while the lock is full with water or there is a current vessel in the lock - wait
+		// while the lock is full with water or there is a current vessel in 
+		//the lock - wait
 		// OR 
 		// while the lock is empty and there is no vessel in the lock
 		while(this.getState() == 0 || this.getCurrent_vessel() == null) {
