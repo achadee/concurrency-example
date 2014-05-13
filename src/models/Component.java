@@ -2,8 +2,15 @@ package models;
 
 import main.Param;
 
+/**
+ * 
+ * @author avinchadee
+ * extended class for sections and locks (because they contain alot of similar methods	
+ *
+ */
+
 public class Component {
-	private Vessel current_vessel;
+	public Vessel current_vessel;
 	boolean isLock;
 	private int id;
 	
@@ -20,6 +27,10 @@ public class Component {
 		this.setCurrent_vessel(v);
 	}
 	
+	/**
+	 * checks if the component contains a vessel
+	 * @return
+	 */
 	public boolean does_not_contain_ship() {
 		if(getCurrent_vessel() == null){
 			return true;
@@ -31,12 +42,16 @@ public class Component {
 		return current_vessel;
 	}
 
+	/**
+	 * setter that also logs every time something is set
+	 * @param current_vessel
+	 */
 	public void setCurrent_vessel(Vessel current_vessel) {
 		if(current_vessel != null){
 			System.out.print("[" + current_vessel.getId() + "] ");
 			if(this.getId() == -1){
 				System.out.print("enters lock to go " );
-				if(current_vessel.has_been_through_loop){
+				if(current_vessel.isHas_been_through_loop()){
 					System.out.println("down");
 				}
 				else{
@@ -50,6 +65,12 @@ public class Component {
 		}
 		this.current_vessel = current_vessel;
 	}
+	
+	/**
+	 * abstracted 'move to' moves the vessel from the current state
+	 * 'this' to the next state
+	 * @param next
+	 */
 	
 	public synchronized void moveTo(Component next) {
 

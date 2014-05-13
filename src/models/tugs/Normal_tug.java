@@ -2,6 +2,12 @@ package models.tugs;
 
 import models.Section;
 
+/**
+ * Thread that controls moving tugs from one section to the next
+ * @author avinchadee
+ *
+ */
+
 public class Normal_tug extends Thread {
 
 	private Section s2;
@@ -15,6 +21,11 @@ public class Normal_tug extends Thread {
 		this.id = i;
 	}
 	
+	
+	/**
+	 * listen to the section that the tug is assigned to
+	 * move vessel if valid
+	 */
 	public void run() {
 		while(true){
 			synchronized (s){

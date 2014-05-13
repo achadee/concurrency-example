@@ -8,7 +8,7 @@ public class Vessel {
   //the Id of this vessel
   protected int id;
 
-public boolean has_been_through_loop;
+  private boolean has_been_through_loop;
 
   //the next ID to be allocated
   protected static int nextId = 1;
@@ -32,5 +32,13 @@ public boolean has_been_through_loop;
   public String toString() {
     return "[" + id + "] ";
   }
+
+public boolean isHas_been_through_loop() {
+	return has_been_through_loop;
+}
+
+public void setHas_been_through_loop(boolean has_been_through_loop) {
+	this.has_been_through_loop = has_been_through_loop;
+}
 }
 

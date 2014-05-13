@@ -2,6 +2,12 @@ package models;
 
 import main.Param;
 
+/**
+ * 
+ * @author avinchadee
+ *	lock class, Monitor that mantains the state of the lock
+ */
+
 public class Lock extends Component {
 	
 	private int state;
@@ -15,6 +21,10 @@ public class Lock extends Component {
 		return state;
 	}
 
+	/**
+	 * Sets the state of the lock and logs it out to console
+	 * @param state
+	 */
 	public void setState(int state) {
 		if(state == 1){
 			System.out.println("Chamber Fills");
@@ -31,9 +41,16 @@ public class Lock extends Component {
 		this.state = state;
 	}
 
+	/**
+	 * Takes in a vessel from the producer
+	 * @param v
+	 */
+	
 	public synchronized void take_in_vessel(Vessel v) {
-		// while the lock is full or there is a current vessel in the lock - wait
-		while(this.getState() == 1 || this.getCurrent_vessel() != null){
+		// while the lock is full with water or there is a current vessel in the lock - wait
+		// OR 
+		// while the lock is empty and there is no vessel in the lock
+		while(this.getState() == 1 || this.getCurrent_vessel() != null) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -45,6 +62,32 @@ public class Lock extends Component {
 		notifyAll();
 	}
 	
+	/**
+	 * Returns a vessel from section[n-1]
+	 * @param v
+	 */
+	
+	public synchronized void return_vessel(Vessel v) {
+		// while the lock is full with water or there is a current vessel in the lock - wait
+		// OR 
+		// while the lock is empty and there is no vessel in the lock
+		while(this.getState() == 0 || this.getCurrent_vessel() == null) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		if(this.getCurrent_vessel().isHas_been_through_loop()){
+			this.setState(0);
+			this.setCurrent_vessel(v);
+		}
+		notifyAll();
+	}
+	
+	/**
+	 * tries to change the state of the lock if the pre conditions are met
+	 */
 	public synchronized void try_to_change_state(){
 		if(this.getCurrent_vessel() == null && this.getState() == 0){
 			this.try_to_fill();
@@ -55,7 +98,9 @@ public class Lock extends Component {
 		notifyAll();
 	}
 	
-	
+	/**
+	 * tries to fill
+	 */
 	public void try_to_fill() {
 		if(this.getState() == 1){
 			System.out.println("Tried to fill lock: Already full!");
@@ -64,6 +109,9 @@ public class Lock extends Component {
 
 	}
 	
+	/**
+	 * tries to empty
+	 */
 	public void try_to_empty() {
 		if(this.getState() == 0){
 			System.out.println("Tried to empty lock: Already empty!");

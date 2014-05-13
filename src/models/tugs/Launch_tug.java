@@ -4,6 +4,12 @@ package models.tugs;
 import models.Lock;
 import models.Section;
 
+/**
+ * Thread that controls launching tugs from the lock to the first section
+ * @author avinchadee
+ *
+ */
+
 public class Launch_tug extends Thread {
 	
 	public Lock l;
@@ -14,6 +20,9 @@ public class Launch_tug extends Thread {
 		this.section = section;
 	}
 	
+	/**
+	 * constantly listens to the lock to take vessels to the first section
+	 */
 	public void run() {
 		while(true){
 			synchronized (l){
