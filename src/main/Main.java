@@ -1,12 +1,4 @@
 package main;
-import models.Lock;
-import models.Section;
-import models.concurrent.Consumer;
-import models.concurrent.Operator;
-import models.concurrent.Producer;
-import models.tugs.Launch_tug;
-import models.tugs.Return_tug;
-import models.tugs.Normal_tug;
 
 /**
  * The top-level component of the canal system simulator.

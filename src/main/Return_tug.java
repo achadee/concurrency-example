@@ -1,7 +1,5 @@
-package models.tugs;
+package main;
 
-import models.Lock;
-import models.Section;
 
 /**
  * thread that controls returning a tug and freeing it from memory

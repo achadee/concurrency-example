@@ -1,7 +1,5 @@
-package models.concurrent;
+package main;
 
-import main.Param;
-import models.Lock;
 
 /**
  * Operates the level of the lock, all logic is maintained in the lock

@@ -1,7 +1,5 @@
-package models.concurrent;
+package main;
 
-import models.Lock;
-import models.Vessel;
 
 /**
  * Thread that consumes vessels once they have completed a cycle

@@ -1,8 +1,6 @@
-package models.tugs;
+package main;
 
 
-import models.Lock;
-import models.Section;
 
 /**
  * Thread that controls launching tugs from the lock to the first section

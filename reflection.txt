@@ -25,6 +25,3 @@ Some things I don't like about my design
 1. When you put the thread on wait, it literally stops the thread so you have
    to set a listener for when the value changes. It would be better if the 
    notify method could notify a particular wait.
-
-2. There is a current bug in my code where it doesn't complete the whole 
-   cycle, as a result, the boats queue up at the return tug  

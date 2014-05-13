@@ -1,4 +1,4 @@
-package models;
+package main;
 
 public class Section extends Component {
 	

@@ -1,6 +1,5 @@
-package models.tugs;
+package main;
 
-import models.Section;
 
 /**
  * Thread that controls moving tugs from one section to the next

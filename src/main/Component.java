@@ -1,6 +1,5 @@
-package models;
+package main;
 
-import main.Param;
 
 /**
  * 
