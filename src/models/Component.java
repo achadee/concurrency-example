@@ -85,6 +85,7 @@ public class Component {
 			}
 		}
 		try {
+			current_vessel.setHas_been_through_loop(true);
 			System.out.print("[" + current_vessel.getId() + "] leaves ");
 			if(this.id == -1){
 				System.out.println("the lock");

@@ -31,6 +31,7 @@ public class Launch_tug extends Thread {
 							section.getCurrent_vessel() == null){
 						this.l.moveTo(this.section);
 						this.section.notifyAll();
+						l.notifyAll();
 					}
 				}
 			}

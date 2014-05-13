@@ -68,19 +68,22 @@ public class Lock extends Component {
 	 * @param v
 	 */
 	
-	public synchronized void return_vessel(Vessel v) {
+	public synchronized void return_vessel(Vessel v, Component prev) {
 		// while the lock is full with water or there is a current vessel in 
 		//the lock - wait
 		// OR 
 		// while the lock is empty and there is no vessel in the lock
-		while(this.getState() == 0 || this.getCurrent_vessel() == null) {
+		System.out.println("State is: " + this.getState() + " " + this.getCurrent_vessel() + " " + v.isHas_been_through_loop());
+		while(this.getState() == 0 && this.getCurrent_vessel() != null
+				&& v.isHas_been_through_loop()) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		if(this.getCurrent_vessel().isHas_been_through_loop()){
+		if(v.isHas_been_through_loop()){
+			prev.setCurrent_vessel(null);
 			this.setState(0);
 			this.setCurrent_vessel(v);
 		}
@@ -119,6 +122,25 @@ public class Lock extends Component {
 			System.out.println("Tried to empty lock: Already empty!");
 		}
 		this.setState(0);
+	}
+
+	public void setVesseltohasvisited() {
+		this.current_vessel.setHas_been_through_loop(true);
+		
+	}
+
+	public synchronized void removeVessel() {
+		
+			while(this.getCurrent_vessel() == null 
+					|| !this.getCurrent_vessel().isHas_been_through_loop()){
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			this.setCurrent_vessel(null);
 	}
 	
 
